@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>../icons/baseline_file_download_black_18dp.png</file>
+    <file>../icons/baseline_memory_black_18dp.png</file>
+    <file>../icons/baseline_drive_folder_upload_black_18dp.png</file>
+  </qresource>
+</RCC>
