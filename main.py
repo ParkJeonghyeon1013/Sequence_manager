@@ -6,6 +6,7 @@ import pathlib
 dirpath = pathlib.Path('/data/workspace/python/copy_files/seqeunce_data')
 
 res = dirpath.glob('*.exr')
+print(res)
 
 comp = re.compile(r'\.(?P<frange>[0-9]{4})\.', re.DOTALL)
 file_frame_lst = list()

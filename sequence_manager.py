@@ -3,6 +3,7 @@ import importlib
 import pathlib
 import pyseq
 import re
+import shutil
 
 from PySide2 import QtWidgets, QtGui, QtCore
 
@@ -20,8 +21,12 @@ class SequenceManger(QtWidgets.QMainWindow, sequence_manager_ui.Ui_MainWindow_Se
         self.__dir = ''
 
 
+
+
+
         self.setupUi(self)
         self._signal()
+
 
         # 리스트에 넣는 방법
         self.listWidget__missing.addItems(['aaaaaaaa', 'bbbbb', 'ccccccccccc'])
@@ -30,6 +35,8 @@ class SequenceManger(QtWidgets.QMainWindow, sequence_manager_ui.Ui_MainWindow_Se
 
         # 어떤 아이템을 클릭했는가.
         self.listWidget__missing.currentItemChanged.connect(self.changed_missing_item)
+
+        self.set_missing()
 
 
     @property
@@ -71,11 +78,20 @@ class SequenceManger(QtWidgets.QMainWindow, sequence_manager_ui.Ui_MainWindow_Se
         self.listWidget__seq_info.addItem(str(seq_name))
         return str(seq_name)
 
-    # def set_missing(self):
-    #     lst = list(range(1001, 1151))
-    #     frame_info = set(lst) ^ set(file_frame_lst)
-        # print(list(frame_info))
+    def set_missing(self):
+        # seq_name = self.set_listwidget_seq_info()
+        seq_name = "render.1001-1150.exr"
+        tmp = re.search(r'(\d+)-(\d+)', seq_name)
+        f_num = tmp[1]
+        l_num = tmp[2]
 
+        norm_lst = list(range(int(f_num), int(l_num)))
+        print(norm_lst)
+
+        # lst = list(range(1001, 1151))
+        # frame_info = set(lst) ^ set(file_frame_lst)
+        # print(list(frame_info))
+        #
         # test - file copy
         # shutil.copy2(
         #    '/home/rapa/aaa.py', '/home/rapa/qqq.py')
