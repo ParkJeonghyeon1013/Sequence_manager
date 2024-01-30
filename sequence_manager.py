@@ -18,6 +18,11 @@ importlib.reload(sequence_manager_ui)
 class SequenceManger(QtWidgets.QMainWindow, sequence_manager_ui.Ui_MainWindow_Sequence_manager):
     def __init__(self, parent = None):
         super().__init__(parent)
+
+        # self.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.CustomContextMenu)
+        # 나온 시퀀스 파일에서 우클릭했을 때 그부분에서만 연관 탭이 뜨도록 policy 를 내가 만든 Custom으로 설정해야 함.
+        # self.listWidget_seq_info.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.CustomContextMenu)
+
         self.__dir = ''
 
 
@@ -78,29 +83,32 @@ class SequenceManger(QtWidgets.QMainWindow, sequence_manager_ui.Ui_MainWindow_Se
         self.listWidget__seq_info.addItem(str(seq_name))
         return str(seq_name)
 
+
     def set_missing(self):
+        path = pathlib.Path(self.dir)
+        seq_list = path.glob('*.exr')
+        comp = re.compile(r'\.(?P<frange>[0-9]{4})\.', re.DOTALL)
+
+        file_frame_lst = list()
+        filename_lst = list()
+
+        for seq in seq_list:
+            srch = comp.search(seq.name)
+            file_frame_lst.append(int(srch.group('frange')))
+            filename_lst.append(seq.name)
+
         # seq_name = self.set_listwidget_seq_info()
         seq_name = "render.1001-1150.exr"
         tmp = re.search(r'(\d+)-(\d+)', seq_name)
         f_num = tmp[1]
         l_num = tmp[2]
 
+
+        print(filename_lst)
         norm_lst = list(range(int(f_num), int(l_num)))
+
+        mis_frame = set(norm_lst) ^ set()
         print(norm_lst)
-
-        # lst = list(range(1001, 1151))
-        # frame_info = set(lst) ^ set(file_frame_lst)
-        # print(list(frame_info))
-        #
-        # test - file copy
-        # shutil.copy2(
-        #    '/home/rapa/aaa.py', '/home/rapa/qqq.py')
-
-
-
-
-
-
 
 
 
@@ -126,4 +134,3 @@ if __name__ == '__main__':
     seq_mgr = SequenceManger()
     seq_mgr.show()
     sys.exit(app.exec_())
-

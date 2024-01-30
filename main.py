@@ -28,4 +28,4 @@ frame_info = set(lst) ^ set(file_frame_lst)
 #    '/home/rapa/aaa.py', '/home/rapa/qqq.py')
 
 s = pyseq.Sequence(filename_lst)
-print(s)
+print(frame_info)
