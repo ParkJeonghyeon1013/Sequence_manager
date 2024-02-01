@@ -3,7 +3,10 @@ import pyseq
 import shutil
 import pathlib
 
-dirpath = pathlib.Path('/data/workspace/python/copy_files/seqeunce_data')
+# dirpath = pathlib.Path('/data/workspace/python/copy_files/seqeunce_data')
+dirpath = pathlib.Path('D:/netflix_ac/resource/render_seq')
+
+print(dirpath)
 
 res = dirpath.glob('*.exr')
 print(res)
@@ -16,6 +19,7 @@ for i in res:
     file_frame_lst.append(int(srch.group('frange')))
     filename_lst.append(i.name)
 
+print(filename_lst)
 lst = list(range(1001, 1151))
 
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'sequence_manager.ui'
+## Form generated from reading UI file 'sequence_manager_custom.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -18,7 +18,8 @@ class Ui_MainWindow_Sequence_manager(object):
     def setupUi(self, MainWindow_Sequence_manager):
         if not MainWindow_Sequence_manager.objectName():
             MainWindow_Sequence_manager.setObjectName(u"MainWindow_Sequence_manager")
-        MainWindow_Sequence_manager.resize(800, 600)
+        MainWindow_Sequence_manager.setEnabled(True)
+        MainWindow_Sequence_manager.resize(888, 371)
         self.centralwidget = QWidget(MainWindow_Sequence_manager)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -50,8 +51,10 @@ class Ui_MainWindow_Sequence_manager(object):
         self.horizontalLayout.addWidget(self.toolButton__work_filepath)
 
 
-        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 2)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
 
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.listWidget__seq_info = QListWidget(self.centralwidget)
@@ -65,7 +68,7 @@ class Ui_MainWindow_Sequence_manager(object):
         self.verticalLayout.addWidget(self.label__seq_info)
 
 
-        self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
+        self.horizontalLayout_2.addLayout(self.verticalLayout)
 
         self.tabWidget__error_seq = QTabWidget(self.centralwidget)
         self.tabWidget__error_seq.setObjectName(u"tabWidget__error_seq")
@@ -93,13 +96,35 @@ class Ui_MainWindow_Sequence_manager(object):
         icon1 = QIcon()
         icon1.addFile(u":/icons/icons/baseline_memory_black_18dp.png", QSize(), QIcon.Normal, QIcon.Off)
         self.tabWidget__error_seq.addTab(self.err_frame_tab, icon1, "")
+        self.sequence_tab = QWidget()
+        self.sequence_tab.setObjectName(u"sequence_tab")
+        self.gridLayout_4 = QGridLayout(self.sequence_tab)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.listWidget__sequence = QListWidget(self.sequence_tab)
+        self.listWidget__sequence.setObjectName(u"listWidget__sequence")
 
-        self.gridLayout.addWidget(self.tabWidget__error_seq, 1, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.listWidget__sequence, 0, 0, 1, 1)
+
+        self.tabWidget__error_seq.addTab(self.sequence_tab, "")
+
+        self.horizontalLayout_2.addWidget(self.tabWidget__error_seq)
+
+        self.label__preview = QLabel(self.centralwidget)
+        self.label__preview.setObjectName(u"label__preview")
+        self.label__preview.setBaseSize(QSize(50, 50))
+
+        self.horizontalLayout_2.addWidget(self.label__preview)
+
+
+        self.gridLayout.addLayout(self.horizontalLayout_2, 1, 0, 1, 1)
 
         MainWindow_Sequence_manager.setCentralWidget(self.centralwidget)
+        self.statusbar = QStatusBar(MainWindow_Sequence_manager)
+        self.statusbar.setObjectName(u"statusbar")
+        MainWindow_Sequence_manager.setStatusBar(self.statusbar)
         self.menubar = QMenuBar(MainWindow_Sequence_manager)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 800, 22))
+        self.menubar.setGeometry(QRect(0, 0, 888, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
@@ -107,9 +132,6 @@ class Ui_MainWindow_Sequence_manager(object):
         self.menuType_Here = QMenu(self.menubar)
         self.menuType_Here.setObjectName(u"menuType_Here")
         MainWindow_Sequence_manager.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(MainWindow_Sequence_manager)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow_Sequence_manager.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
@@ -117,7 +139,7 @@ class Ui_MainWindow_Sequence_manager(object):
 
         self.retranslateUi(MainWindow_Sequence_manager)
 
-        self.tabWidget__error_seq.setCurrentIndex(0)
+        self.tabWidget__error_seq.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow_Sequence_manager)
@@ -130,6 +152,8 @@ class Ui_MainWindow_Sequence_manager(object):
         self.label__seq_info.setText(QCoreApplication.translate("MainWindow_Sequence_manager", u"TextLabel", None))
         self.tabWidget__error_seq.setTabText(self.tabWidget__error_seq.indexOf(self.miss_frame_tab), QCoreApplication.translate("MainWindow_Sequence_manager", u"Missing Frame", None))
         self.tabWidget__error_seq.setTabText(self.tabWidget__error_seq.indexOf(self.err_frame_tab), QCoreApplication.translate("MainWindow_Sequence_manager", u"Error Frame", None))
+        self.tabWidget__error_seq.setTabText(self.tabWidget__error_seq.indexOf(self.sequence_tab), QCoreApplication.translate("MainWindow_Sequence_manager", u"Sequence", None))
+        self.label__preview.setText(QCoreApplication.translate("MainWindow_Sequence_manager", u"Preview", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow_Sequence_manager", u"File", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow_Sequence_manager", u"Help", None))
         self.menuType_Here.setTitle(QCoreApplication.translate("MainWindow_Sequence_manager", u"Type Here", None))
