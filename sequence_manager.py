@@ -54,6 +54,9 @@ class SequenceManger(QtWidgets.QMainWindow, sequence_manager_custom_ui.Ui_MainWi
 
 
         self.set_preview()
+
+        self.get_which_tab(self.tabWidget__error_seq)
+
     @property
     def dir(self):
         return self.__dir
@@ -255,8 +258,11 @@ class SequenceManger(QtWidgets.QMainWindow, sequence_manager_custom_ui.Ui_MainWi
 
     def set_preview(self):
         self.label__preview.setPixmap(QtGui.QPixmap('D:/netflix_ac/resource/gif_seq/musicTone_0000.png'))
-
         pass
+
+    def get_which_tab(self, idx: QtWidgets.QTabWidget): # tab click 했을 때
+        tab_num = self.tabWidget__error_seq.currentIndex()
+        print(f'{idx.tabText}, {tab_num}')
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
