@@ -10,8 +10,8 @@ from PySide2 import QtWidgets, QtGui, QtCore
 
 # UI 생성하기 전에 경로를 지정해서 rc를 계속 불러오지 않아도 되도록 설정해준다!
 # 무.조.건 UI 생성 전!!!!!!!
-# sys.path.append('/home/rapa/git_workspace/Sequence_manager/resource/rc')
-sys.path.append('C:/Users/USER/Desktop/git_workspace/Sequence_manager/resource')
+sys.path.append('/home/rapa/git_workspace/Sequence_manager/resource/rc')
+# sys.path.append('C:/Users/USER/Desktop/git_workspace/Sequence_manager/resource')
 from resource.ui2 import sequence_manager_custom_ui
 
 importlib.reload(sequence_manager_custom_ui)
@@ -207,6 +207,8 @@ class SequenceManger(QtWidgets.QMainWindow, sequence_manager_custom_ui.Ui_MainWi
         norm_lst = list(range(f_num, l_num))
 
         mis_frame = set(norm_lst) ^ set(file_frame_lst)
+        # set sort 하는 방법! 문자의 경우 숫자 자료형으로 정렬 설정 / 애초에 숫자로 받았으면 key 설정 필요 없음.
+        sorted(mis_frame, key=int)
         mis_frame_lst = [f'render.{frame}.exr' for frame in mis_frame]
 
         self.listWidget__missing.clear()

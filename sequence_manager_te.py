@@ -44,7 +44,7 @@ class SequenceManager(QtWidgets.QMainWindow, sequence_manager_ui.Ui_MainWindow_S
     def set_seq_file_info(self):
         seq_dpath = pathlib.Path(self.lineEdit__dirpath.text())
         print(seq_dpath.exists())
-        file_gen = seq_dpath.glob('*.exr')
+        file_gen = seq_dpath.glob('*.*')
         file_names = list(map(lambda x: x.name, file_gen))
 
         chunk_file_info = pyseq.Sequence(file_names)
